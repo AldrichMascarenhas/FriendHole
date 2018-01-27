@@ -1,7 +1,26 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.0'
+    ext {
+        minSdkVersion = 21
+        targetSdkVersion = 26
+        compileSdkVersion = 26
+        kotlin_version = '1.2.10'
+        googleServices = "3.1.0"
+        buildToolsVersion = '26.0.2'
+        supportLibraryVersion = '27.0.2'
+        constraintLayoutVersion = '1.0.2'
+        junitVersion = '4.12'
+        espressoCoreVersion = '3.0.1'
+        rxandroidVersion = "2.0.1"
+        rxkotlinVersion = "2.1.0"
+        rxadapter = "1.0.0"
+        daggerVersion = "2.13"
+        retrofitVersion = "2.3.0"
+        okhttpVersion = "3.9.0"
+        androidTestRunner = "1.0.1"
+        gson = "2.8.0"
+    }
     repositories {
         google()
         jcenter()
