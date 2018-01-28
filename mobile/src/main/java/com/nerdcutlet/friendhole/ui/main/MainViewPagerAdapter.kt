@@ -1,4 +1,4 @@
-package com.nerdcutlet.friendhole.ui.home
+package com.nerdcutlet.friendhole.ui.main
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

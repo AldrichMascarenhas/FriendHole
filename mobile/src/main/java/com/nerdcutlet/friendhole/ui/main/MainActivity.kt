@@ -1,4 +1,4 @@
-package com.nerdcutlet.friendhole.ui.home
+package com.nerdcutlet.friendhole.ui.main
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
