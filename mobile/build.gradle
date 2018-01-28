@@ -4,14 +4,20 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+def versionMajor = 0
+def versionMinor = 1
+def versionPatch = 0
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
+    flavorDimensions "versionCode"
+
     defaultConfig {
         applicationId "com.nerdcutlet.friendhole"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionName versionName(versionMajor, versionMinor, versionPatch)
+        versionCode versionCode(versionMajor, versionMinor, versionPatch)
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -20,13 +26,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        production {
+            applicationId "com.nerdcutlet.friendhole.prod"
+            resValue "string", "app_name", "Friend Hole"
+            versionName "${versionName(versionMajor, versionMinor, versionPatch)}"
+        }
+        staging {
+            applicationId "com.nerdcutlet.friendhole.staging"
+            resValue "string", "app_name", "Friend Hole Staging"
+            versionName "${versionName(versionMajor, versionMinor, versionPatch)}"
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //Kotlin
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$rootProject.ext.kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$rootProject.ext.kotlin_version"
 
     //Android
     implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
@@ -44,9 +63,35 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpVersion"
     implementation "com.google.code.gson:gson:$rootProject.ext.gson"
 
+    //Dagger
+    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android:$rootProject.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+
+    //Firebase
+    compile "com.google.firebase:firebase-core:$rootProject.ext.googleServices"
+    compile "com.google.firebase:firebase-firestore:$rootProject.ext.googleServices"
+    compile "com.google.firebase:firebase-auth:$rootProject.ext.googleServices"
+    compile "com.google.firebase:firebase-invites:$rootProject.ext.googleServices"
+
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     androidTestImplementation "com.android.support.test:runner:$rootProject.ext.androidTestRunner"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoCoreVersion"
+
+    //Wear
     wearApp project(':wear')
-    implementation 'com.google.android.gms:play-services-wearable:+'
+    implementation "com.google.android.gms:play-services-wearable:$rootProject.ext.googleServices"
 }
+
+def versionName(major, minor, patch) {
+    return "${major}.${minor}.${patch}"
+}
+
+def versionCode(major, minor, patch) {
+    return major * 10000 + minor * 1000 + patch * 100;
+}
+
+apply plugin: "com.google.gms.google-services"

@@ -20,6 +20,7 @@ buildscript {
         okhttpVersion = "3.9.0"
         androidTestRunner = "1.0.1"
         gson = "2.8.0"
+        googleServices = "11.8.0"
     }
     repositories {
         google()
@@ -28,6 +29,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:3.1.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
