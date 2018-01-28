@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "392210977348",
+    "firebase_url": "https://friendhole-189f8.firebaseio.com",
+    "project_id": "friendhole-189f8",
+    "storage_bucket": "friendhole-189f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392210977348:android:821142d9b353e885",
+        "android_client_info": {
+          "package_name": "com.nerdcutlet.friendhole.prod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392210977348-6g26f8l6d6fb6c3u8ijqgm46id9tboht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQS9jnIKscjW4fLYOaunWkkTzmprdvqLc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392210977348:android:33aaa3af8ada0a69",
+        "android_client_info": {
+          "package_name": "com.nerdcutlet.friendhole.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392210977348-6g26f8l6d6fb6c3u8ijqgm46id9tboht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQS9jnIKscjW4fLYOaunWkkTzmprdvqLc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
