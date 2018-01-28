@@ -1,8 +1,11 @@
-package com.nerdcutlet.friendhole.ui.main
+package com.nerdcutlet.friendhole.ui.main.common
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.nerdcutlet.friendhole.ui.main.fragment.FriendsFragment
+import com.nerdcutlet.friendhole.ui.main.fragment.HomeFragment
+import com.nerdcutlet.friendhole.ui.main.fragment.ProfileFragment
 import java.security.InvalidParameterException
 
 class MainViewPagerAdapter(
@@ -12,9 +15,9 @@ class MainViewPagerAdapter(
 
     override fun getItem(position: Int): Fragment =
             when (pages[position]) {
-                0 -> MainFragment.newInstance(pages[position])
-                1 -> MainFragment.newInstance(pages[position])
-                2 -> MainFragment.newInstance(pages[position])
+                0 -> HomeFragment.newInstance()
+                1 -> FriendsFragment.newInstance()
+                2 -> ProfileFragment.newInstance()
                 else -> throw InvalidParameterException("Could not recognise the page: ${pages[position]}")
             }
 

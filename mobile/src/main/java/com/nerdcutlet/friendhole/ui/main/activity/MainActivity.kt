@@ -1,12 +1,17 @@
-package com.nerdcutlet.friendhole.ui.main
+package com.nerdcutlet.friendhole.ui.main.activity
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.AppCompatActivity
 import com.nerdcutlet.friendhole.R
+import com.nerdcutlet.friendhole.ui.main.common.MainViewPagerAdapter
+import com.nerdcutlet.friendhole.ui.main.viewmodel.MainViewModel
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
+
+    @Inject lateinit var viewmodel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
