@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 def versionMajor = 0
 def versionMinor = 1
@@ -19,6 +18,8 @@ android {
         versionName versionName(versionMajor, versionMinor, versionPatch)
         versionCode versionCode(versionMajor, versionMinor, versionPatch)
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        resConfigs "auto"
+
     }
     buildTypes {
         release {
@@ -39,7 +40,9 @@ android {
             versionName "${versionName(versionMajor, versionMinor, versionPatch)}"
         }
     }
+
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -65,17 +68,18 @@ dependencies {
 
     //Dagger
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
+    implementation 'com.android.support:support-v4:26.1.0'
     kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger-android:$rootProject.daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
-    provided 'org.glassfish:javax.annotation:10.0-b28'
 
-    //Firebase
+    //FireBase
     compile "com.google.firebase:firebase-core:$rootProject.ext.googleServices"
     compile "com.google.firebase:firebase-firestore:$rootProject.ext.googleServices"
     compile "com.google.firebase:firebase-auth:$rootProject.ext.googleServices"
     compile "com.google.firebase:firebase-invites:$rootProject.ext.googleServices"
+    implementation "com.firebaseui:firebase-ui-auth:$rootProject.ext.firebaseui"
 
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     androidTestImplementation "com.android.support.test:runner:$rootProject.ext.androidTestRunner"
