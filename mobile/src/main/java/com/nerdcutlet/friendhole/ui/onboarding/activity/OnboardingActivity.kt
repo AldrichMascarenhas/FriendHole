@@ -52,7 +52,7 @@ class OnboardingActivity : DaggerAppCompatActivity() {
         startActivity(Intent(this, MainActivity::class.java))
 
     }
-    
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
@@ -60,6 +60,10 @@ class OnboardingActivity : DaggerAppCompatActivity() {
 
             // Successfully signed in
             if (resultCode == Activity.RESULT_OK) {
+                /*
+                TODO:
+                1. Go to Profile builder Activity.
+                 */
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
                 return
