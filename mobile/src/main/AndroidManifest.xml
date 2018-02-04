@@ -19,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.main.activity.MainActivity" />
+        <activity android:name=".ui.profilesetup.activity.ProfileSetupActivity"></activity>
     </application>
 
 </manifest>
