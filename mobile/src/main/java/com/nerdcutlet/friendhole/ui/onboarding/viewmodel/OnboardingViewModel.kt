@@ -7,4 +7,20 @@ import javax.inject.Inject
 class OnboardingViewModel @Inject constructor(private val firebaseAuth: FirebaseAuth,
                                               private val firebaseFirestore: FirebaseFirestore) {
 
+    fun checkAuthStatus(): Boolean {
+
+        if (firebaseAuth.currentUser == null) {
+            return true
+        } else {
+            return false
+        }
+
+    }
+
+//    fun checkIfUserProfileExists() : Boolean {
+//
+//
+//    }
+
+
 }
