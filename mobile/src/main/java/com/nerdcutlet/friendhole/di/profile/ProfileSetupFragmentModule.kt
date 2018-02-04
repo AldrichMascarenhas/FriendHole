@@ -16,7 +16,7 @@ class ProfileDetailsFragmentModule {
 }
 
 @Module
-class ProfileUsernameFragment {
+class ProfileUsernameFragmentModule {
 
     @Provides
     fun provideProfileUsernameViewModel(firebaseAuth: FirebaseAuth, firebaseFirestore: FirebaseFirestore) = ProfileUsernameViewModel(firebaseAuth, firebaseFirestore)

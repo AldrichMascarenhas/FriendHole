@@ -47,6 +47,16 @@ class OnboardingActivity : DaggerAppCompatActivity() {
                 false -> goToHome()
             }
         }
+
+        button_activity_profile.setOnClickListener {
+            startActivity(Intent(this, ProfileSetupActivity::class.java))
+            finish()
+        }
+
+        button_activity_main.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
     }
 
     fun goToHome() {
