@@ -1,20 +1,21 @@
 package com.nerdcutlet.friendhole.ui.onboarding.activity
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.ErrorCodes
+import com.firebase.ui.auth.IdpResponse
 import com.nerdcutlet.friendhole.BuildConfig
 import com.nerdcutlet.friendhole.R
+import com.nerdcutlet.friendhole.extensions.activity.toast
+import com.nerdcutlet.friendhole.ui.main.activity.MainActivity
 import com.nerdcutlet.friendhole.ui.onboarding.viewmodel.OnboardingViewModel
+import com.nerdcutlet.friendhole.ui.profilesetup.activity.ProfileSetupActivity
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_onboarding.*
 import java.util.*
 import javax.inject.Inject
-import com.firebase.ui.auth.ErrorCodes
-import com.firebase.ui.auth.IdpResponse
-import android.content.Intent
-import com.nerdcutlet.friendhole.extensions.activity.toast
-import com.nerdcutlet.friendhole.ui.main.activity.MainActivity
 
 
 class OnboardingActivity : DaggerAppCompatActivity() {
@@ -30,17 +31,17 @@ class OnboardingActivity : DaggerAppCompatActivity() {
         setupUI()
     }
 
-    fun setupUI(){
+    fun setupUI() {
         button_activity_onboarding.setOnClickListener {
-            when(viewmodel.checkAuthStatus()){
+            when (viewmodel.checkAuthStatus()) {
                 true -> startActivityForResult(
                         AuthUI.getInstance()
                                 .createSignInIntentBuilder()
                                 .setAvailableProviders(Arrays.asList(
-                                         AuthUI.IdpConfig.EmailBuilder().build(),
-                                         AuthUI.IdpConfig.PhoneBuilder().build(),
-                                         AuthUI.IdpConfig.GoogleBuilder().build()))
-                                .setIsSmartLockEnabled(!BuildConfig.DEBUG , true )
+                                        AuthUI.IdpConfig.EmailBuilder().build(),
+                                        AuthUI.IdpConfig.PhoneBuilder().build(),
+                                        AuthUI.IdpConfig.GoogleBuilder().build()))
+                                .setIsSmartLockEnabled(!BuildConfig.DEBUG, true)
                                 .build(),
                         RC_SIGN_IN)
                 false -> goToHome()
@@ -48,7 +49,7 @@ class OnboardingActivity : DaggerAppCompatActivity() {
         }
     }
 
-    fun goToHome(){
+    fun goToHome() {
         startActivity(Intent(this, MainActivity::class.java))
 
     }
@@ -60,11 +61,9 @@ class OnboardingActivity : DaggerAppCompatActivity() {
 
             // Successfully signed in
             if (resultCode == Activity.RESULT_OK) {
-                /*
-                TODO:
-                1. Go to Profile builder Activity.
-                 */
-                startActivity(Intent(this, MainActivity::class.java))
+
+                //TODO : Check if User has profile and go to correct Activity
+                startActivity(Intent(this, ProfileSetupActivity::class.java))
                 finish()
                 return
             } else {

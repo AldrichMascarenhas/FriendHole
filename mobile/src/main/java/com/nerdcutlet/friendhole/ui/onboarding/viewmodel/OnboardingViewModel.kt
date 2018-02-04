@@ -17,5 +17,10 @@ class OnboardingViewModel @Inject constructor(private val firebaseAuth: Firebase
 
     }
 
+//    fun checkIfUserProfileExists() : Boolean {
+//
+//
+//    }
+
 
 }
